@@ -27,9 +27,6 @@ maxretry = 1
 ```
 4) copy honeypot.conf to /etc/fail2ban/filter.d/honeypot.conf
 5) run fail2ban-client reload honeypot
-```
-systemctl restart fail2ban # Debian or Ubuntu
-```
 
 **Warning**
 
