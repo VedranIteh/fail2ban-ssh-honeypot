@@ -13,6 +13,7 @@ iptables -N HONEYPOT
 iptables -A HONEYPOT -j LOG --log-prefix "honeypot: " --log-level 6
 iptables -A HONEYPOT -j DROP
 iptables -A INPUT -p tcp -m tcp --dport 22 --tcp-flags FIN,SYN,RST,ACK SYN -j HONEYPOT
+sudo /sbin/iptables-save
 ```
 3) add this code block to your jail.local
 ```
@@ -26,6 +27,9 @@ maxretry = 1
 ```
 4) copy honeypot.conf to /etc/fail2ban/filter.d/honeypot.conf
 5) run fail2ban-client reload honeypot
+```
+systemctl restart fail2ban # Debian or Ubuntu
+```
 
 **Warning**
 
