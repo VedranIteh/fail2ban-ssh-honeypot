@@ -13,7 +13,11 @@ iptables -N HONEYPOT
 iptables -A HONEYPOT -j LOG --log-prefix "honeypot: " --log-level 6
 iptables -A HONEYPOT -j DROP
 iptables -A INPUT -p tcp -m tcp --dport 22 --tcp-flags FIN,SYN,RST,ACK SYN -j HONEYPOT
-/sbin/iptables-save
+
+# Save iptables rules
+apt update
+apt install iptables-persistent
+netfilter-persistent save
 ```
 3) add this code block to your jail.local
 ```
