@@ -25,8 +25,9 @@ banaction = iptables-allports
 bantime  = 604800
 maxretry = 1
 ```
-4) copy honeypot.conf to /etc/fail2ban/filter.d/honeypot.conf
-5) run fail2ban-client reload honeypot
+4) copy `honeypot.conf` to `/etc/fail2ban/filter.d/honeypot.conf`
+5) (if installing jail for the first time) run `service fail2ban reload`
+6) run `fail2ban-client reload honeypot`
 
 **Warning**
 
