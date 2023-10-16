@@ -15,7 +15,7 @@ iptables -A HONEYPOT -j DROP
 iptables -A INPUT -p tcp -m tcp --dport 22 --tcp-flags FIN,SYN,RST,ACK SYN -j HONEYPOT
 iptables-save > ~/iptables.save
 ```
-3) add this code block to your jail.local
+3) add this code block to your `jail.local`
 ```
 [honeypot]
 enabled  = true
@@ -25,9 +25,10 @@ banaction = iptables-allports
 bantime  = 604800
 maxretry = 1
 ```
-4) copy honeypot.conf to /etc/fail2ban/filter.d/honeypot.conf
-5) run fail2ban-client reload honeypot
+4) copy `honeypot.conf` to `/etc/fail2ban/filter.d/honeypot.conf`
+5) (if installing jail for the first time) run `service fail2ban reload`
+6) run `fail2ban-client reload honeypot`
 
 **Warning**
 
-Don't lock yourself out od your box ! Be aware to connect to the new port from now on. Have a backup plan, lower the bantime, raise the failure attempts (maxretry), whitelist yourself etc...
+Don't lock yourself out of  your box ! Be aware to connect to the new port from now on. Have a backup plan, lower the bantime, raise the failure attempts (maxretry), whitelist yourself etc...
